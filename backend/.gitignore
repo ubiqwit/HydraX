@@ -10,3 +10,5 @@ build/
 # Secrets
 *.env
 secret.py
+
+data/buildings.db
