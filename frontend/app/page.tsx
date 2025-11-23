@@ -35,6 +35,7 @@ export default function HomePage() {
             <span>HydraX</span>
           </div>
           <nav className="hx-nav-links">
+            <a href="#hero">Home</a>
             <a href="#about">About</a>
             <a href="#problem">Problem</a>
             <a href="#solution">Solution</a>
@@ -175,18 +176,17 @@ export default function HomePage() {
             <p className="hx-section-subtitle">
               London receives significant annual rainfall, yet most of it rushes
               straight into drains. Families face water stress, cities face
-              overwhelmed drainage systems, and planners lack a clear map of
+              overwhelmed drainage systems, and home owners lack a clear map of
               where water can be stored at the building scale.
             </p>
           </div>
 
-          <div className="hx-card">
+          <div className="hx-card" id="bluebox">
             <p className="hx-body-text">
               Without a clear view of rooftop potential, rainwater harvesting
               decisions are slow, fragmented and reactive. HydraX replaces
               guesswork with actionable geospatial intelligence that supports
-              SDG 6 (Clean Water), SDG 11 (Sustainable Cities) and SDG 13
-              (Climate Action).
+              Clean Water (SDG 6), Sustainable Cities (SDG 11) and Climate Action (SDG 13).
             </p>
           </div>
         </div>
@@ -208,31 +208,34 @@ export default function HomePage() {
           </div>
 
           <div className="hx-steps hx-reveal">
-            <div className="hx-step-card">
+            <div className="hx-step-card" id="card1">
               <p className="hx-step-index">Step 1 · Ingest</p>
-              <h3 className="hx-step-title">Open environmental &amp; urban data</h3>
+              <h3 className="hx-step-title">Rooftop and Area detection.</h3>
               <p className="hx-step-body">
-                HydraX pulls in rainfall history, rooftop polygons, elevation
-                and land-use data from open-source and municipal datasets for
-                the London area.
+                HydraX identifies rooftop footprints at a specified address using
+                open geospatial datasets. It calculates the total rooftop coverage
+                area (in square meters) to estimate potential water collection
+                surfaces.
               </p>
             </div>
-            <div className="hx-step-card">
+            <div className="hx-step-card" id="card2">
               <p className="hx-step-index">Step 2 · Analyse</p>
-              <h3 className="hx-step-title">AI-powered rooftop potential</h3>
+              <h3 className="hx-step-title">Predict rainfall</h3>
               <p className="hx-step-body">
-                We estimate rainwater capture per building using roof area,
-                slope assumptions and rainfall intensity, then classify
-                rooftops into low, medium and high-yield opportunities.
+                Using historical rainfall data and a 20-year projection model,
+                HydraX predicts future precipitation trends. The system estimates
+                expected rainfall volume per square meter of rooftop and computes
+                potential harvestable water for each building as well as for the
+                city of London as a whole.
               </p>
             </div>
-            <div className="hx-step-card">
+            <div className="hx-step-card" id="card3">
               <p className="hx-step-index">Step 3 · Visualize</p>
-              <h3 className="hx-step-title">Interactive city-scale dashboard</h3>
+              <h3 className="hx-step-title">Rainwater impact simulation</h3>
               <p className="hx-step-body">
-                City planners explore districts, filter by yield class and
-                simulate how installing harvesting systems impacts stormwater
-                runoff and water availability.
+                The results are visualized on an interactive city-scale map,
+                showing water capture potential, stormwater reduction, and
+                household support capacity for different districts across London city.
               </p>
             </div>
           </div>

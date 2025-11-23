@@ -12,6 +12,7 @@
   --hx-bg-dark: #050a0f;
   --hx-card-bg: linear-gradient(145deg, rgba(15, 45, 64, 0.95), rgba(11, 30, 43, 0.98));
   --hx-shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --hx-border-soft: rgba(199, 249, 204, 0.16);
   --hx-radius-xl: 18px;
   /* Background gradients */
   --hx-gradient-dark-to-bg: radial-gradient(circle at top, #173147 0, #050a0f 55%);
@@ -53,7 +54,6 @@ a {
 .hx-page {
   min-height: 100vh;
 }
-
 .hx-section {
   padding: 80px 10%;
 }
@@ -330,6 +330,7 @@ a {
 
 .hx-section-header {
   margin-bottom: 32px;
+
 }
 
 .hx-section-kicker {
@@ -358,6 +359,7 @@ a {
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 40px;
   align-items: flex-start;
+  
 }
 
 .hx-card {
@@ -368,6 +370,51 @@ a {
   box-shadow: var(--hx-shadow-soft);
   width: 500px;
   height: 270px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  cursor: pointer;
+  border-color: rgba(199, 249, 204, 0.6);
+}
+
+.hx-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(87, 204, 153, 0.28);
+  border-color: rgba(199, 249, 204, 0.6);
+}
+
+.hx-split > .hx-card {
+  border: 1px solid rgba(199, 249, 204, 0.06); /* very faint initially */
+}
+.hx-split > .hx-card:hover {
+  border-color: rgba(199, 249, 204, 0.6); /* stronger on hover */
+  box-shadow: 0 18px 45px rgba(87, 204, 153, 0.28);
+}
+
+#bluebox {
+  border: 1px solid rgba(199, 249, 204, 0.06); /* very faint initially */
+}
+
+#bluebox:hover {
+  border-color: rgba(199, 249, 204, 0.6); /* stronger on hover */
+  box-shadow: 0 18px 45px rgba(87, 204, 153, 0.28);
+}
+
+#bluebox {
+  height: 160px;
+}
+  
+#card1,
+#card2,
+#card3 {
+  background: rgba(15, 30, 45, 0.95);
+  border-radius: 14px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}  
+
+#card1:hover,
+#card2:hover,
+#card3:hover {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.386);
+  transform: translateY(-10px);
 }
 
 .hx-body-text {
@@ -438,6 +485,7 @@ a {
 .hx-step-body {
   font-size: 0.9rem;
   color: var(--hx-text-muted);
+  padding-top: 10px;
 }
 
 /* ---------- IMPACT ---------- */
