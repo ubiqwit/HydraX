@@ -190,6 +190,36 @@ def _simple_linear_prediction(annual_precipitation: pd.DataFrame, years_ahead: i
     return predictions
 
 
+def get_current_year_rainfall_collection(building_area_m2: float,
+                                        csv_path: str = "data/london_weather.csv") -> Dict:
+    """
+    Get the current year's (last year in dataset) rainfall collection data.
+    
+    Args:
+        building_area_m2: Building rooftop area in square meters
+        csv_path: Path to the weather CSV file
+        
+    Returns:
+        Dictionary with current year's rainfall and collection data
+    """
+    df = load_weather_data(csv_path)
+    
+    # Get the last year in the dataset
+    last_year = int(df['year'].max())
+    
+    # Calculate annual precipitation for the last year
+    annual_precipitation = df[df['year'] == last_year]['precipitation'].sum()
+    
+    # Calculate collection in liters
+    liters = building_area_m2 * (annual_precipitation / 1000) * RUNOFF_COEFF * 1000
+    
+    return {
+        "year": last_year,
+        "rainfall_mm": float(annual_precipitation),
+        "collection_liters": float(liters)
+    }
+
+
 def calculate_predicted_collection(building_area_m2: float,
                                   predicted_rainfall: Dict) -> Dict:
     """

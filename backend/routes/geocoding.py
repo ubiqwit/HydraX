@@ -4,7 +4,7 @@ from flask import Blueprint, request, jsonify
 from services.geocoding_service import geocode_address, GeocodingError
 from services.building_service import find_nearest_building, BuildingNotFoundError
 from services.rainfall_service import (
-    calculate_annual_rainfall_collection,
+    get_current_year_rainfall_collection,
     predict_future_rainfall,
     calculate_predicted_collection
 )
@@ -21,10 +21,10 @@ def geocode():
         "easting": ..., 
         "northing": ...,
         "building_area": ... (in sq m),
-        "annual_rainfall_collection": {
-            "annual_data": {year: {rainfall_mm, collection_liters}},
-            "average_annual_rainfall_mm": ...,
-            "average_annual_collection_liters": ...
+        "current_year_rainfall": {
+            "year": ...,
+            "rainfall_mm": ...,
+            "collection_liters": ...
         },
         "predicted_rainfall": {
             year: {
@@ -58,11 +58,11 @@ def geocode():
     except Exception as e:
         return jsonify({"error": f"Error finding building: {str(e)}"}), 500
 
-    # Calculate annual rainfall collection (historical data)
+    # Get current year rainfall collection
     try:
-        annual_collection_data = calculate_annual_rainfall_collection(building_area)
+        current_year_data = get_current_year_rainfall_collection(building_area)
     except Exception as e:
-        return jsonify({"error": f"Error calculating annual rainfall: {str(e)}"}), 500
+        return jsonify({"error": f"Error calculating current year rainfall: {str(e)}"}), 500
 
     # Predict future rainfall (next 10 years)
     try:
@@ -76,6 +76,6 @@ def geocode():
         "easting": easting,
         "northing": northing,
         "building_area": building_area,
-        "annual_rainfall_collection": annual_collection_data,
+        "current_year_rainfall": current_year_data,
         "predicted_rainfall": predicted_collection
     })
